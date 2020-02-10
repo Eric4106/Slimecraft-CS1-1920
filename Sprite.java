@@ -25,6 +25,7 @@ public abstract class Sprite {
         this.vy = (int) (Math.random() * this.speed);
         this.width = width;
         this.height = height;
+        this.type = type;
         this.color = color;
         this.bounds = new Rectangle(x, y, width, height);
     }
@@ -70,21 +71,17 @@ public abstract class Sprite {
     }
     
     public void eat(Sprite other) {
-        try {
-        if (this.type.equals("Food") && other.type.equals("Squib")) {
+        if (this.type.equals("Squib") && other.type.equals("Food")) {
             if (this.bounds.intersects(other.bounds)) {
-                other.width++;
-                other.height++;
-                this.die();
+                this.width += 5;
+                this.height += 5;
+                other.die();
             }
-        }
-        }
-        catch(Exception E) {
-            
         }
     }
     
     public void die() {
-        
+        x = - 1000;
+        y = - 1000;
     }
 }
