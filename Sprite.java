@@ -3,24 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package slimecraft;
+package digbuild;
+
+//@author 710568
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-/**
- *
- * @author jword
- */
 public abstract class Sprite {
-    private int speed;
-    private int x, y, vx, vy;
-    private int width, height;
+    private int speed, x, y, vx, vy, width, height;
+    private String type;
     private Color color;
     private Rectangle bounds;
-
-    public Sprite(int speed, int x, int y, int width, int height, Color color) {
+    
+    public Sprite(String type, int speed, int x, int y, int width, int height, Color color) {
         this.speed = speed;
         this.x = x;
         this.y = y;
@@ -33,34 +30,61 @@ public abstract class Sprite {
     }
     
     public void update() {
-        this.x += this.vx;
-        this.y += this.vy;
-        this.bounds = new Rectangle(x, y, width, height);
+        x += vx;
+        y += vy;
+        bounds = new Rectangle(x, y, width, height);
     }
     
     public abstract void draw(Graphics g);
-
-    public int getWidth() {
-        return width;
-    }    
-
+    
     public int getX() {
         return x;
     }
-
+    
     public int getY() {
         return y;
     }
-
+    
+    public int getWidth() {
+        return width;
+    }
+    
     public int getHeight() {
         return height;
     }
-
+    
     public Color getColor() {
         return color;
     }
     
-    public boolean collide(Sprite other) {
-        return this.bounds.intersects(other.bounds);
+    public void collide(Sprite other) {
+        if (this.bounds.intersects(other.bounds)) {
+            this.didCollide();
+            other.didCollide();
+        }
+    }
+    
+    public void didCollide() {
+        vx = -vx;
+        vy = -vy;
+    }
+    
+    public void eat(Sprite other) {
+        try {
+        if (this.type.equals("Food") && other.type.equals("Squib")) {
+            if (this.bounds.intersects(other.bounds)) {
+                other.width++;
+                other.height++;
+                this.die();
+            }
+        }
+        }
+        catch(Exception E) {
+            
+        }
+    }
+    
+    public void die() {
+        
     }
 }

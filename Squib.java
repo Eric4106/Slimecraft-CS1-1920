@@ -5,19 +5,17 @@
  */
 package digbuild;
 
+//@author 710568
+
 import java.awt.Color;
 import java.awt.Graphics;
 
-//@author 710568
-
-public class Food extends Sprite{
-    private static final int SPEED = 0;
-    private static final int WIDTH = 5;
-    private static final int HEIGHT = 5;
-    private static final Color COLOR = Color.WHITE;
+public class Squib extends Sprite {
+    private static final int WIDTH = 10;
+    private static final int HEIGHT = 15;
     
-    public Food(int x, int y) {
-        super("Food", SPEED, x, y, WIDTH, HEIGHT, COLOR);
+    public Squib(int speed, int x, int y, Color color) {
+        super("Squib", speed, x, y, WIDTH, HEIGHT, color);
     }
     
     @Override
