@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package slimecraft;
+package SlimeCraft;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -11,7 +11,7 @@ import javax.swing.JFrame;
 
 /**
  *
- * @author jword
+ * @author 641580
  */
 public class Slimecraft extends JFrame  {
 
