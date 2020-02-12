@@ -17,6 +17,8 @@ public class Slime extends Sprite {
     private static final int WIDTH = 10;
     private static final int HEIGHT = 15;
     private int strength;
+    private int health = 50;
+   
     
     
     public Slime(int speed, int x, int y, Color color) {
@@ -28,7 +30,18 @@ public class Slime extends Sprite {
         if (super.getBounds().intersects(food.getBounds()) && food.isAlive()) {
             super.setHeight(super.getHeight() + 5);
             super.setWidth(super.getWidth() + 5);
+            this.health += 10;
             food.die();
+        }
+    }
+     public void eat(Virus virus) {
+        if (super.getBounds().intersects(virus.getBounds()) && virus.isAlive()) {
+            this.health -= 10;
+            if (this.health == 0){
+            super.die();
+            }
+            
+            virus.die();
         }
     }
      
