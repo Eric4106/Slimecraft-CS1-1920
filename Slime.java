@@ -17,13 +17,15 @@ public class Slime extends Sprite {
     private static final int WIDTH = 10;
     private static final int HEIGHT = 15;
     private int strength;
-    private int health = 50;
+    private int health = 100;
+    boolean isInfected;
    
     
     
     public Slime(int speed, int x, int y, Color color) {
         super(speed, x, y, WIDTH, HEIGHT, color);
         this.strength = (int) (Math.random() * 20);
+        this.isInfected = false;
     }
     
      public void eat(Food food) {
@@ -34,14 +36,23 @@ public class Slime extends Sprite {
             food.die();
         }
     }
+    public void virusKilling() {
+        this.health -= 5;
+        if (this.health == 0){
+            super.die();
+        }
+     }
      public void eat(Virus virus) {
         if (super.getBounds().intersects(virus.getBounds()) && virus.isAlive()) {
-            this.health -= 10;
-            if (this.health == 0){
-            super.die();
-            }
-            
+            //this.isInfected = true;
             virus.die();
+        }
+    }
+      public void eat(Cure cure) {
+        if (super.getBounds().intersects(cure.getBounds()) && cure.isAlive()) {
+            this.isInfected = false;
+            this.health += 20;
+            cure.die();
         }
     }
      

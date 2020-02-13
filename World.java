@@ -21,7 +21,8 @@ public class World extends JPanel {
     private ArrayList<Sprite> sprites = new ArrayList<>();
     private ArrayList<Food> foods = new ArrayList<>();
     private ArrayList<Virus> viruses = new ArrayList<>(); 
-    private ArrayList<Slime> slimes = new ArrayList<>();    
+    private ArrayList<Slime> slimes = new ArrayList<>();  
+     private ArrayList<Cure> cures = new ArrayList<>();
     Timer timer;
     
     public World() {
@@ -58,6 +59,13 @@ public class World extends JPanel {
             viruses.add(virus);
             sprites.add(virus);
         }  
+         for (int i = 0; i < 10; i++) {
+            int x = (int) (Math.random() * 800);
+            int y = (int) (Math.random() * 600);
+            Cure cure = new Cure(x,y);
+            cures.add(cure);
+            sprites.add(cure);
+        }  
     }
     
     public void paintComponent(Graphics g) {
@@ -66,8 +74,13 @@ public class World extends JPanel {
             for (Food food : foods) {
                 slime.eat(food);
             }   
+             for (Cure cure : cures) {
+                slime.eat(cure);
+            }   
             for (Virus virus : viruses) {
                 slime.eat(virus);
+                if(slime.isInfected = true) {
+                    slime.virusKilling();}
             }            
         }
         
@@ -129,6 +142,14 @@ public class World extends JPanel {
         }
         
         viruses.removeAll(trash);
+        trash.clear();
+        
+         for (Cure cure : cures) {
+            if (!cure.isAlive())
+                trash.add(cure);
+        }
+        
+        cures.removeAll(trash);
         trash.clear();
         
         for (Blob blob : blobs) {
