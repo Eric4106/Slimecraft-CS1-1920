@@ -37,14 +37,14 @@ public class Slime extends Sprite {
         }
     }
     public void virusKilling() {
-        this.health -= 5;
+        this.health -= 1;
         if (this.health == 0){
             super.die();
         }
      }
      public void eat(Virus virus) {
         if (super.getBounds().intersects(virus.getBounds()) && virus.isAlive()) {
-            //this.isInfected = true;
+            this.isInfected = true;
             virus.die();
         }
     }
@@ -69,7 +69,7 @@ public class Slime extends Sprite {
     @Override
     public void draw(Graphics g) {
         g.setColor(super.getColor());
-        g.fillRect(super.getX(), super.getY(), super.getWidth(), super.getHeight());
+        g.fillOval(super.getX(), super.getY(), super.getWidth(), super.getHeight());
     }
 
     public int getStrength() {

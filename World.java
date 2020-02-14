@@ -79,7 +79,7 @@ public class World extends JPanel {
             }   
             for (Virus virus : viruses) {
                 slime.eat(virus);
-                if(slime.isInfected = true) {
+                if(slime.isInfected == true) {
                     slime.virusKilling();}
             }            
         }
