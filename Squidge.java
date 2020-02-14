@@ -10,10 +10,30 @@ package digbuild;
 import java.awt.Color;
 
 public class Squidge extends Squib{
-    private static final int SPEED = 5;
-    private static final Color COLOR = Color.BLUE;
+    private static final int speed = 5;
+    private static final Color color = Color.CYAN;
     
     public Squidge(int x, int y) {
-        super(SPEED, x, y, COLOR);
+        super(speed, x, y, color);
+    }
+    
+    public void fight(Squodge squodge) {
+        if (super.collide(squodge)) {
+            if (super.getStrength() >= squodge.getStrength()) {
+                this.didWin(squodge);
+                squodge.die();
+            }
+            else {
+                squodge.didWin(this);
+                this.die();
+            }
+        }
+    }
+    
+    public Squidge reproduce(Squidge mate) {
+        int newX = super.getX() + (int) (Math.random() * 20 - 10);
+        int newY = super.getY() + (int) (Math.random() * 20 - 10);
+        Squidge baby = new Squidge(newX, newY);
+        return baby;
     }
 }

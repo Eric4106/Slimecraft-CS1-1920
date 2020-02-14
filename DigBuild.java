@@ -7,8 +7,8 @@ package digbuild;
 
 //@author 710568
 
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.JFrame;
 
 public class DigBuild extends JFrame{
@@ -20,5 +20,11 @@ public class DigBuild extends JFrame{
         j.setSize(800, 600);
         j.setVisible(true);
         j.setLocationRelativeTo(null);
+        j.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                c.mousePressed(e);
+            }
+        });
     }
 }
