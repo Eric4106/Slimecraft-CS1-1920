@@ -18,14 +18,14 @@ public abstract class Sprite {
     private Rectangle bounds;
     private boolean alive, infected, onceHad;
     
-    public Sprite(String type, int speed, int health, int age, int x, int y, int radius, Color color, boolean infected) {
+    public Sprite(String type, int speed, int health, int x, int y, int radius, Color color, boolean infected) {
         this.speed = speed;
         this.x = x;
         this.y = y;
         this.vx = (int) (Math.random() * this.speed);
         this.vy = (int) (Math.random() * this.speed);
         this.health = health;
-        this.age = age;
+        this.age = 0;
         this.radius = radius;
         this.type = type;
         this.color = color;

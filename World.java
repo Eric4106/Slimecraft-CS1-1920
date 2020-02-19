@@ -105,7 +105,7 @@ public class World extends JPanel{
         for (Squodge squodge : squodges) {
             for (Squodge otherSquodge : squodges) {
                 if (squodge == otherSquodge) continue;
-                if (squodge.collide(otherSquodge) && Math.random() < 0.01 && squodge.getAge() > 10) {
+                if (squodge.collide(otherSquodge) && Math.random() < 0.02 && squodge.getAge() > 20) {
                     newSquodges.add(squodge.reproduce(otherSquodge));
                 }
             }

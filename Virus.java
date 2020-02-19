@@ -15,7 +15,7 @@ public class Virus extends Sprite{
     private static final int radius = 5;
     private static final Color color = Color.MAGENTA;
     public Virus(int x, int y) {
-        super("Virus", speed, 1000, 0, x, y, radius, color, false);
+        super("Virus", speed, 1000, x, y, radius, color, false);
     }
     
     @Override

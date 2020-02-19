@@ -15,7 +15,7 @@ public class Squib extends Sprite {
     private int strength;
     
     public Squib(int speed, int x, int y, Color color) {
-        super("Squib", speed, 500, 0, x, y, radius, color, false);
+        super("Squib", speed, 500, x, y, radius, color, false);
         this.strength = (int) (Math.random() * 20);
     }
     

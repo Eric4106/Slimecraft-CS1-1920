@@ -16,7 +16,7 @@ public class Food extends Sprite{
     private static final Color color = Color.YELLOW;
     
     public Food(int x, int y) {
-        super("Food", speed, 1, 0, x, y, radius, color, false);
+        super("Food", speed, 1, x, y, radius, color, false);
     }
     
     @Override
