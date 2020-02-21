@@ -25,30 +25,30 @@ public abstract class Sprite {
         this.speed = speed;
         this.x = x;
         this.y = y;
-        this.vx = (int) (Math.random() * this.speed * 2 - this.speed);
-        this.vy = (int) (Math.random() * this.speed * 2 - this.speed);
+        this.vx = (int)(Math.random() * this.speed * 2 - this.speed);
+        this.vy = (int)(Math.random() * this.speed * 2 - this.speed);
         this.width = width;
         this.height = height;
         this.color = color;
         this.bounds = new Rectangle(x, y, width, height);
     }
-    
+
     public void update() {
         this.x += this.vx;
         this.y += this.vy;
         this.bounds = new Rectangle(x, y, width, height);
     }
-    
+
     public void grow(double rate) {
         this.width *= rate;
         this.height *= rate;
     }
-    
+
     public abstract void draw(Graphics g);
 
     public int getWidth() {
         return width;
-    }    
+    }
 
     public int getX() {
         return x;
@@ -69,15 +69,15 @@ public abstract class Sprite {
     public boolean isAlive() {
         return alive;
     }
-    
+
     public int getY() {
         return y;
     }
-    
-   public void setY(int y) {
+
+    public void setY(int y) {
         this.y = y;
     }
-   
+
     public int getHeight() {
         return height;
     }
@@ -93,7 +93,7 @@ public abstract class Sprite {
     public Color getColor() {
         return color;
     }
-    
+
     public boolean collide(Sprite other) {
         boolean collided = this.bounds.intersects(other.bounds);
         if (collided) {
@@ -102,18 +102,18 @@ public abstract class Sprite {
         }
         return collided;
     }
-    
+
     public void collideWorldBounds(int cWidth, int cHeight) {
         if (this.x < 0 || this.x + this.width > cWidth)
             this.vx = -this.vx;
         if (this.y < 0 || this.y + this.height > cHeight)
-            this.vy = -this.vy;       
+            this.vy = -this.vy;
     }
 
     public Rectangle getBounds() {
         return bounds;
     }
-    
+
     public void didCollide() {
         this.vx = -this.vx;
         this.vy = -this.vy;

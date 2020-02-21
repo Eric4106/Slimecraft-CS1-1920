@@ -14,21 +14,19 @@ import java.awt.Graphics;
  */
 public class Slime extends Sprite {
     //static constants
-    private static final int WIDTH = 10;
+    private static final int WIDTH = 15;
     private static final int HEIGHT = 15;
     private int strength;
-    private int health = 100;
+    private int health = 200;
     boolean isInfected;
-   
-    
-    
+
     public Slime(int speed, int x, int y, Color color) {
         super(speed, x, y, WIDTH, HEIGHT, color);
-        this.strength = (int) (Math.random() * 20);
+        this.strength = (int)(Math.random() * 20);
         this.isInfected = false;
     }
-    
-     public void eat(Food food) {
+
+    public void eat(Food food) {
         if (super.getBounds().intersects(food.getBounds()) && food.isAlive()) {
             super.setHeight(super.getHeight() + 5);
             super.setWidth(super.getWidth() + 5);
@@ -38,34 +36,34 @@ public class Slime extends Sprite {
     }
     public void virusKilling() {
         this.health -= 1;
-        if (this.health == 0){
+        if (this.health == 0) {
             super.die();
         }
-     }
-     public void eat(Virus virus) {
+    }
+    public void eat(Virus virus) {
         if (super.getBounds().intersects(virus.getBounds()) && virus.isAlive()) {
             this.isInfected = true;
             virus.die();
         }
     }
-      public void eat(Cure cure) {
+    public void eat(Cure cure) {
         if (super.getBounds().intersects(cure.getBounds()) && cure.isAlive()) {
             this.isInfected = false;
             this.health += 20;
             cure.die();
         }
     }
-     
-     public Slime reproduce(Slime mate) {
-         Slime baby = new Slime(super.getSpeed(), super.getY(), super.getY(), super.getColor());
-         return baby;
-     }
-     
-     public void didWin (Slime other) {
-         this.strength += this.strength - other.strength;
-         super.grow(1.2);
-     }
-    
+
+    public Slime reproduce(Slime mate) {
+        Slime baby = new Slime(super.getSpeed(), super.getY(), super.getY(), super.getColor());
+        return baby;
+    }
+
+    public void didWin(Slime other) {
+        this.strength += this.strength - other.strength;
+        super.grow(1.2);
+    }
+
     @Override
     public void draw(Graphics g) {
         g.setColor(super.getColor());
@@ -75,5 +73,5 @@ public class Slime extends Sprite {
     public int getStrength() {
         return strength;
     }
-    
+
 }

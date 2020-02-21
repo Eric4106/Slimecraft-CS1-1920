@@ -14,7 +14,7 @@ public class Food extends Sprite {
     private static final int HEIGHT = 5;
     private static final int SPEED = 0;
 
-    public Food (int x, int y) {
+    public Food(int x, int y) {
         super(SPEED, x, y, WIDTH, HEIGHT, COLOR);
     }
 
@@ -23,5 +23,4 @@ public class Food extends Sprite {
         g.setColor(super.getColor());
         g.drawOval(super.getX(), super.getY(), super.getWidth(), super.getHeight());
     }
-
 }

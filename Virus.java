@@ -14,7 +14,7 @@ public class Virus extends Sprite {
     private static final int HEIGHT = 10;
     private static final int SPEED = 0;
 
-    public Virus (int x, int y) {
+    public Virus(int x, int y) {
         super(SPEED, x, y, WIDTH, HEIGHT, COLOR);
     }
 
@@ -23,5 +23,4 @@ public class Virus extends Sprite {
         g.setColor(super.getColor());
         g.drawOval(super.getX(), super.getY(), super.getWidth(), super.getHeight());
     }
-
 }

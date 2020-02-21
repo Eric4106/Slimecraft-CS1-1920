@@ -28,6 +28,4 @@ public class Cure extends Sprite {
         g.setColor(super.getColor());
         g.drawOval(super.getX(), super.getY(), super.getWidth(), super.getHeight());
     }
-
 }
-
